@@ -8,11 +8,12 @@ from random import seed
 from random import gauss
 import streamlit as st
 
+st.set_page_config(layout="wide")
 
 #############################################################
 # PARÂMETROS DE ENTRADA
 
-cols = st.columns([1,4])
+cols = st.columns([1, 2])
 
 with cols[0]:
     st.subheader('MP-resuldados', divider=True)
@@ -26,14 +27,14 @@ with cols[0]:
                   )
     
     N_conj = st.number_input('número de conjunto de dados',
-                  value = 1,
+                  value = 6,
                   min_value = 1,
                   max_value = 1000
                   )
     
 
     N_medidas = st.number_input('número de quedas em cada conjunto',
-                  value = 1,
+                  value = 10,
                   min_value = 1,
                   max_value = 1000
                   )
@@ -107,7 +108,7 @@ with cols[1]:
         #ax.set_title('')
         ax.set_xlabel('conjuntos de medidas')
         ax.set_ylabel('tempo de queda (s)')
-        ax.legend(loc='lower right', ncols=1)
+        ax.legend(ncols=1)
     
         ax.text(
             0.5,
@@ -184,7 +185,7 @@ with cols[1]:
         #ax.set_title('Incerteza do valor médio')
         ax.set_xlabel('conjuntos de medidas')
         ax.set_ylabel('tempo de queda (s)')
-        ax.legend(loc='lower left', ncols=1)
+        ax.legend(ncols=1)
     
         ax.text(
             0.5,
