@@ -11,10 +11,10 @@ import streamlit as st
 st.set_page_config(layout="wide")
 
 if 'clicked' not in st.session_state:
-    st.session_state.clicked = {1: True, 2: False, 3: False}
+    st.session_state.clicked = {0: True, 1: False, 2: False, 3: False}
     
 def clicked(botao):
-    for bot in [1, 2, 3]:
+    for bot in [0, 1, 2, 3]:
         st.session_state.clicked[bot] = False
     st.session_state.clicked[botao] = True
 
@@ -32,14 +32,7 @@ with cols[0]:
                   min_value = 1.,
                   max_value = 100.,
                   step=0.1,
-                  )
-    
-    N_conj = st.number_input('número de conjunto de dados',
-                  value = 6,
-                  min_value = 1,
-                  max_value = 1000
-                  )
-    
+                  )    
 
     N_medidas = st.number_input('número de quedas em cada conjunto',
                   value = 10,
@@ -57,6 +50,7 @@ with cols[0]:
 
     info = st.empty()
 
+    botao_dados = st.button('dados', on_click=clicked, args=[0])
     botao_medias = st.button('valores médios', on_click=clicked, args=[1])
     botao_hist = st.button('histogramas', on_click=clicked, args=[2])
     botao_crono = st.button('resolução do cronômetro', on_click=clicked, args=[3])
@@ -67,27 +61,52 @@ with cols[0]:
 
 def medidas(N_conj, N_medidas, h, desvio_padrao):
     t = (2*h/9.787899) **(0.5)
-    medidas = pd.Series()
-    estatistica = pd.DataFrame(columns = ['media', 'desvio', 'incerteza'])
-
-    for i in range(N_conj):
         
-        med = pd.Series([gauss(t,desvio_padrao) for i in range(N_medidas)])
-        medidas = pd.concat([medidas, med])
+    medidas = pd.Series([gauss(t,desvio_padrao) for i in range(N_medidas)])
         
-        est = pd.DataFrame({'media':[medidas.mean()],'desvio':[medidas.std()], 'incerteza':[medidas.std()/((i+1)*N_medidas)**0.5]})
-        estatistica = pd.concat([estatistica, est])
+    estatistica = pd.DataFrame(columns=['media', 'desvio', 'incerteza'])
+    for i in range(1, N_conj+1):
+        medidas_frac = medidas.iloc[:int(i*N_medidas/N_conj)]
+        estatistica_frac = pd.DataFrame({
+            'media':[medidas_frac.mean()],
+            'desvio':[medidas_frac.std()],
+            'incerteza':[medidas_frac.std()/(medidas_frac.size)**0.5],
+        })
+        estatistica = pd.concat([estatistica, estatistica_frac])
     
     return medidas, estatistica.reset_index()
 
 # Assign o conjunto
 
-m1, e1 = medidas(N_conj, N_medidas, h, desvio_padrao)
+m1, e1 = medidas(10, N_medidas, h, desvio_padrao)
 
 with cols[1]:
     
-# Gráfico
+# Dados
 
+    if st.session_state.clicked[0]:
+        fig, ax = plt.subplots()
+        
+        m1.plot(
+            ax=ax,
+            color='orange',
+            marker='o',
+            ls=':',
+        )
+        
+        t = (2*h/9.787899) **(0.5)
+        
+        ax.axhline(
+            t,
+            color='blue',
+            ls='--',
+            label='valor de referência',
+        )
+        
+        st.pyplot(fig)
+        
+
+# Médias
     if st.session_state.clicked[1]:
     
         fig, ax = plt.subplots()
@@ -147,7 +166,7 @@ with cols[1]:
 
         for ax, frac, color in zip(axs, fracs, colors):
     
-            a = m1[:int(frac*N_conj*N_medidas)]
+            a = m1[:int(frac*N_medidas)]
     
             sns.histplot(a, alpha=0.4, ax=ax, label=f'{int(100*frac)}%', color=color)
 
