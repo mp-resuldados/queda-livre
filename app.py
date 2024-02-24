@@ -10,6 +10,14 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
+if 'clicked' not in st.session_state:
+    st.session_state.clicked = {1: True, 2: False, 3: False}
+    
+def clicked(botao):
+    for bot in [1, 2, 3]:
+        st.session_state.clicked[bot] = False
+    st.session_state.clicked[botao] = True
+
 #############################################################
 # PARÂMETROS DE ENTRADA
 
@@ -49,9 +57,9 @@ with cols[0]:
 
     info = st.empty()
 
-    botao_medias = st.button('valores médios')
-    botao_hist = st.button('histogramas')
-    botao_crono = st.button('resolução do cronômetro')
+    botao_medias = st.button('valores médios', on_click=clicked, args=[1])
+    botao_hist = st.button('histogramas', on_click=clicked, args=[2])
+    botao_crono = st.button('resolução do cronômetro', on_click=clicked, args=[3])
 
 #############################################################
 
@@ -80,7 +88,7 @@ with cols[1]:
     
 # Gráfico
 
-    if botao_medias:
+    if st.session_state.clicked[1]:
     
         fig, ax = plt.subplots()
 
@@ -129,7 +137,7 @@ with cols[1]:
 
 # Histograma
 
-    if botao_hist:
+    if st.session_state.clicked[2]:
     
         fig, axs_arr = plt.subplots(2, 2, sharex=True, sharey=True)
 
@@ -167,7 +175,7 @@ with cols[1]:
 
 # Comparação do desvio padrão com a resolução do cronômetro
 
-    if botao_crono:
+    if st.session_state.clicked[3]:
 
         fig, ax = plt.subplots()
 
