@@ -35,17 +35,17 @@ with cols[0]:
     st.subheader('MP-resuldados', divider=True)
     st.caption('Tempo de queda livre de um objeto')
 
-    h = st.number_input('altura da queda em metros',
+    h = st.number_input('altura do lançamento',
                   value = 1.5,
                   min_value = 1.,
                   max_value = 100.,
                   step=0.1,
                   )    
 
-    N_medidas = st.number_input('número de quedas em cada conjunto',
-                  value = 10,
+    N_medidas = st.number_input('número de lançamentos',
+                  value = 100,
                   min_value = 1,
-                  max_value = 1000
+                  max_value = 10000
                   )
     
     desvio_padrao = st.number_input('desvio padrão do conjunto do de medidas',
