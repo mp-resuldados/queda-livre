@@ -131,26 +131,33 @@ with cols[1]:
 
     if botao_hist:
     
-        fig, ax = plt.subplots()
-        for a in [m1,
-          m1[:int(N_conj*N_medidas/4)],
-          m1[:int(N_conj*N_medidas/2)],
-          m1[:3*int(N_conj*N_medidas/4)],
-          ]:      
-            sns.histplot(a, alpha=0.4)
-            ax.text(
+        fig, axs_arr = plt.subplots(2, 2, sharex=True, sharey=True)
+
+        axs = [ax for axs in axs_arr for ax in axs]
+        fracs = [.25, .50, .75, 1]
+        colors = ['orange', 'r', 'g', 'b']
+
+        for ax, frac, color in zip(axs, fracs, colors):
+    
+            a = m1[:int(frac*N_conj*N_medidas)]
+    
+            sns.histplot(a, alpha=0.4, ax=ax, label=f'{int(100*frac)}%', color=color)
+
+            ax.set_xlabel('tempo de queda (s)')
+            ax.set_ylabel('contagem')
+            ax.legend(loc='upper right')
+    
+        fig.text(
             0.5,
             0.5,
             "MP-resuldados",
-            transform=ax.transAxes,
-            fontsize=40,
+            fontsize=50,
             color="gray",
             alpha=0.1,
             ha="center",
             va="center",
-            rotation=0,
-        )
-    
+            rotation=45,
+    )
     
         st.pyplot(fig)
         
@@ -176,7 +183,7 @@ with cols[1]:
             e1.index,
             e1['incerteza'],
             color='orange',
-            marker='.',
+            marker='o',
             linestyle='none',
             label='Incerteza do valor médio'
             )
