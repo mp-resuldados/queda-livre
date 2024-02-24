@@ -12,6 +12,14 @@ st.set_page_config(layout="wide")
 
 if 'clicked' not in st.session_state:
     st.session_state.clicked = {0: True, 1: False, 2: False, 3: False}
+
+if 'timestamp' not in st.session_state:
+    timestamp = datetime.datetime.now().timestamp()
+    st.session_state.timestamp = timestamp
+else:
+    timestamp = st.session_state.timestamp
+    
+seed(timestamp)
     
 def clicked(botao):
     for bot in [0, 1, 2, 3]:
