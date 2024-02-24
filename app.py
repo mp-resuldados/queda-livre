@@ -127,11 +127,10 @@ with cols[1]:
         linestyle='dashed',
         label='valor de referência'
         )
-  
-
+            
         # média e incerteza
         ax.errorbar(
-            e1.index,
+            10*(1+e1.index),
             e1['media'],
             yerr = e1['incerteza'],
             color='orange',
@@ -140,8 +139,8 @@ with cols[1]:
             label='valores médios'
         )
     
-        #ax.set_title('')
-        ax.set_xlabel('conjuntos de medidas')
+        ax.set_title('Evolução do valor médio')
+        ax.set_xlabel('% dos dados')
         ax.set_ylabel('tempo de queda (s)')
         ax.legend(ncols=1)
     
@@ -215,7 +214,7 @@ with cols[1]:
 
         # desvio para diversos conjuntos com quantidade de medidas diferentes
         ax.plot(
-            e1.index,
+            10*(1+e1.index),
             e1['incerteza'],
             color='orange',
             marker='o',
@@ -224,8 +223,8 @@ with cols[1]:
             )
 
 
-        #ax.set_title('Incerteza do valor médio')
-        ax.set_xlabel('conjuntos de medidas')
+        ax.set_title('Evolução da incerteza do valor médio')
+        ax.set_xlabel('% dos dados')
         ax.set_ylabel('tempo de queda (s)')
         ax.legend(ncols=1)
     
