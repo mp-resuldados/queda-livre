@@ -43,7 +43,7 @@ A aplicação foi testada a partir de um conjunto real de dados fornecido pelo p
 
 No primeiro gráfico, mostrado abaixo, podemos comparar as 600 medidas com o valor esperado. Já é notável que os dados não se distribuem igualmente em torno do valor esperado. É um primeiro indicativo da presença de um erro sistemático.
 
-![gráfico dos dados comparado ao valor esperado](medias.png)
+![gráfico dos dados comparado ao valor esperado](dados.png)
 
 O segundo gráfico, mostrado abaixo, sugere que o valor médio não tende ao valor de referência, tendendo a um valor ligeiramente menor. Isso é altamente sugestivo da presença de um erro sistemático. Na aplicação, não consideramos incerteza na medida da altura, que certamente aparece nos dados reais. É possível que essa diferença seja devido a erros sistemáticos na medida da altura.
 
