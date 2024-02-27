@@ -19,6 +19,10 @@ Os parâmetros iniciais para a geração do conjunto de dados são:
 - número de lançamentos (quantidade de medidas do conjunto);
 - desvio padrão para o conjunto de medidas.
 
+Os dados da aplicação são gerados a partir de uma distribuição gaussiana com o valor médio sendo o valor de referência calculado a partir da altura fornecida. O desvio padrão pode ser escolhido na entrada do programa. O valor 0.1 dado como *default* é baseado em um conjunto de dados reais analisado abaixo. 
+
+Devido ao sorteio de dados de tempo em uma distribuição gaussiana, a aplicação simula erros aleatórios, não simulando erros sistemáticos nem na medida do tempo nem na medida da altura. Toda a análise estatística da aplicação é feita baseada somente nos erros aleatórios.
+
 A análise fornecida pela aplicação consiste em quatro gráficos.
 
 O primeiro gráfico mostra os dados simulados a partir dos parâmetros de entrada comparado ao valor esperado, calculado como:
@@ -27,15 +31,12 @@ $$ t = \sqrt{\frac{2h}{g}} $$
 
 O segundo gráfico mostra o valor médio e a respectiva incerteza (dada pelo desvio padrão dividido pela raiz do número de medidas) para subconjuntos de dados contendo 10%, 20%, 30% ... 100% dos dados. Podemos observar a evolução do valor médio em função da quantidade de medidas do conjunto.
 
-É esperado que valor médio se aproxime do valor de referência quanto maior o conjunto de dados estudado. Se notarmos que os valores médios tendem para um valor diferente do esperado, provavelmente há a presença de erros sistemáticos. No caso da queda livre, o maior erro sistemático pode vir da medida da altura. Esse erro não é levado em conta na aplicação porém, pode ser visto em um conjunto real que usamos para testar a aplicação (descrição na próxima sessão).
+É esperado que valor médio se aproxime do valor de referência quanto maior o conjunto de dados estudado. Se notarmos que os valores médios tendem para um valor diferente do esperado, provavelmente há a presença de erros sistemáticos. No caso da queda livre, o maior erro sistemático pode vir da medida da altura. Esse erro não é levado em conta na aplicação porém, pode ser visto em um conjunto real que usamos para teste (descrição na próxima sessão).
 
 O terceiro gráfico mostra os histogramas de frequência para subconjuntos de dados usando 25%, 50%, 75% e 100% dos dados. Podemos observar a evolução da largura e altura dos histogramas em função da quantidade de dados.
 
-O quarto gráfico mostra a incerteza do valor médio comparada à resolução de um cronômetro de celular. Podemos observar quantas medidas são necessárias para obter um valor médio mais preciso que a resolução do cronômetro. Note que dados mais precisos não são necessariamente mais acurados. Podemos ter uma incerteza menor que a resolução do cronômetro porém, um valor médio longe do esperado. Isso indica a presença de erros sistemáticos na medida.
+O quarto gráfico mostra a incerteza do valor médio comparada à resolução de um cronômetro de celular. Podemos observar quantas medidas são necessárias para obter um valor médio mais preciso que a resolução do cronômetro.
 
-Os dados da aplicação são gerados a partir de uma distribuição gaussiana com o valor médio sendo o valor de referência calculado a partir da altura fornecida. O desvio padrão pode ser escolhido na entrada do programa. O valor 0.1 dado como *default* é baseado em um conjunto de dados reais analisado abaixo.
-
-A aplicação não simula erros sistemáticos nem na medida do tempo nem na medida da altura. A análise estatística é feita baseada somente nos erros aleatórios.
 
 ## Dados para a validação da simulação
 
@@ -55,9 +56,11 @@ O terceiro gráfico mostra a evolução dos histogramas. Podemos ver, no último
 
 O quarto gráfico mostra que menos de 20% dos dados já são suficientes para ter uma incerteza do valor médio menor que a resolução do cronômetro do celular. Note que isso não significa acurácia. Apesar da boa precisão, os dados dão um resultado pouco acurado, evidenciando a presença de erros sistemáticos nas medições.
 
+Considerando que o tempo de reação de acionamento do cronômetro é, em média 0.25s e que acionamos 2 vezes para a medição, podemos associar uma incerteza de 0.5 segundo para cada medida feita. Esse valor é praticamente igual ao valor esperado! Com esse trabalho, vemos que a análise estatística nos possibilita superar a a incerteza individual da medida e até mesmo a resolução do instrumento utilizado.
+
 ![gráfico comparando a resolução do cronômetro com a incerteza dos valores méddo para várias frações do conjunto de dados](desvio.png)
 
-Espero que essa breve análise de dados reais ajude a diferenciar erros aleatórios e sistemáticos (não presentes na aplicação).
+Com essa breve análise de dados reais podemos entender a diferença entre erros aleatórios e sistemáticos (não presentes na aplicação) aprendendo a reconhecer o tipo de erro presente no experimento olhando apenas para os resultados.
 
 
 ## Referências bibliográficas
