@@ -35,7 +35,7 @@ with cols[0]:
     st.subheader('MP-resuldados', divider=True)
     st.caption('Tempo de queda livre de um objeto')
 
-    h = st.number_input('altura do lançamento',
+    h = st.number_input('altura do lançamento metros',
                   value = 1.5,
                   min_value = 1.,
                   max_value = 100.,
@@ -110,6 +110,24 @@ with cols[1]:
             ls='--',
             label='valor de referência',
         )
+        ax.set_title('Conjunto de dados')
+        #ax.set_xlabel('dados')
+        ax.set_ylabel('tempo de queda (s)')
+        ax.legend(ncols=1)
+    
+        ax.text(
+            0.5,
+            0.5,
+            "MP-resuldados",
+            transform=ax.transAxes,
+            fontsize=40,
+            color="gray",
+            alpha=0.1,
+            ha="center",
+            va="center",
+            rotation=45,
+            )
+    
         
         st.pyplot(fig)
         
@@ -207,8 +225,8 @@ with cols[1]:
 
         # resolução do cronômetro
         ax.axhline(0.01,
-            color='blue',
-            linestyle='dashed',
+            color='green',
+            linestyle='dotted',
             label='resolução do cronômetro'
             )
 

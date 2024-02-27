@@ -56,7 +56,7 @@ O terceiro gráfico mostra a evolução dos histogramas. Podemos ver, no último
 
 O quarto gráfico mostra que menos de 20% dos dados já são suficientes para ter uma incerteza do valor médio menor que a resolução do cronômetro do celular. Note que isso não significa acurácia. Apesar da boa precisão, os dados dão um resultado pouco acurado, evidenciando a presença de erros sistemáticos nas medições.
 
-Considerando que o tempo de reação de acionamento do cronômetro é, em média 0.25s e que acionamos 2 vezes para a medição, podemos associar uma incerteza de 0.5 segundo para cada medida feita. Esse valor é praticamente igual ao valor esperado! Com esse trabalho, vemos que a análise estatística nos possibilita superar a a incerteza individual da medida e até mesmo a resolução do instrumento utilizado.
+Considerando que o tempo de reação de acionamento do cronômetro é, em média 0.25s e que acionamos 2 vezes para a medição, podemos associar uma incerteza de 0.5 segundo para cada medida feita. Esse valor é praticamente igual ao valor esperado! Com esse trabalho, vemos que a incerteza do valor médio pode ser muito menor que a incerteza individual da medida e até mesmo menor que a resolução do instrumento utilizado. 
 
 ![gráfico comparando a resolução do cronômetro com a incerteza dos valores méddo para várias frações do conjunto de dados](desvio.png)
 
