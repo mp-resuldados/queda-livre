@@ -40,23 +40,47 @@ O quarto gráfico mostra a incerteza do valor médio comparada à resolução de
 
 ## Dados para a validação da simulação
 
-A aplicação foi testada a partir de um conjunto real de dados fornecido pelo professor doutor Marcelo M. Sant'Anna da UFRJ. O conjunto é composto de 600 medidas para uma altura de 1.5 m advindas de 5 relatórios de alunos. Com os dados, pude calcular os valores médios e respectivas incertezas, o desvio padrão e os histogramas de frequência para variados subconjuntos de dados. 
+A aplicação foi testada a partir de um conjunto real de dados fornecido pelo professor doutor Marcelo M. Sant'Anna da UFRJ. O conjunto é composto de 600 medidas advindas de 5 relatórios de alunos. As medidas foram feitas a partir do lançamento uma moeda a partir do repouso de uma altura de 1.5 m e medindo-se o tempo de queda com um cronômetro de celular.
 
-No primeiro gráfico, mostrado abaixo, podemos comparar as 600 medidas com o valor esperado. Já é notável que os dados não se distribuem igualmente em torno do valor esperado. É um primeiro indicativo da presença de um erro sistemático.
+Com os dados, pudemos calcular os valores médios e respectivas incertezas, o desvio padrão e os histogramas de frequência para variados subconjuntos de dados. Na seção abaixo, comparamos as medidas reais com um conjunto de dados simulado pela aplicação.
 
-![gráfico dos dados comparado ao valor esperado](dados.png)
+## Comparação entre simulação e dados reais
 
-O segundo gráfico, mostrado abaixo, sugere que o valor médio não tende ao valor de referência, tendendo a um valor ligeiramente menor. Isso é altamente sugestivo da presença de um erro sistemático. Na aplicação, não consideramos incerteza na medida da altura, que certamente aparece nos dados reais. É possível que essa diferença seja devido a erros sistemáticos na medida da altura.
+Simulamos um conjunto de dados com 600 medidas, mesmo número de medidas do conjunto de dados real.
 
-![gráfico da evolução do valor médio em função da quantidade de medidas do conjunto](medias.png)
+Nos primeiros gráficos, mostrados abaixo, podemos comparar as 600 medidas com o valor esperado. 
 
-O terceiro gráfico mostra a evolução dos histogramas. Podemos ver, no último, uma concentração de dados um uma coluna mais alta. Mais de 90% dos dados desta coluna correspondem a um único relatório dos 5 estudados.
+![gráfico dos dados simulados comparado ao valor esperado](dados_simulado.png 'Gráfico dos dados simulados comparado ao valor esperado.')
 
-![histogramas de frequência para 4 frações da quantidade total dos dados](hist.png)
+![gráfico dos dados reais comparado ao valor esperado](dados_real.png 'Gráfico dos dados reais comparado ao valor esperado.')
 
-O quarto gráfico mostra que menos de 20% dos dados já são suficientes para ter uma incerteza do valor médio menor que a resolução do cronômetro do celular. Note que isso não significa acurácia. Apesar da boa precisão, os dados dão um resultado pouco acurado, evidenciando a presença de erros sistemáticos nas medições.
+Já é notável que os dados reais não se distribuem igualmente em torno do valor esperado. É um primeiro indicativo da presença de erros sistemáticos nos dados reais.
 
-![gráfico comparando a resolução do cronômetro com a incerteza dos valores méddo para várias frações do conjunto de dados](desvio.png)
+
+Quando comparamos os valores médios, mostrados abaixo, vemos que o valor médio dos dados reais não tende ao valor de referência, como acontece na simulação, tendendo a um valor ligeiramente menor. Isso é altamente sugestivo da presença de erros sistemáticos nas medidas, além dos erros aleatórios, também presentes na simulação. Na aplicação, não consideramos incerteza na medida da altura, que certamente aparece nos dados reais. É possível que essa diferença seja devido a erros sistemáticos na medida da altura.
+
+![gráfico da evolução do valor médio em função da quantidade de medidas do conjunto simulado](medias_simulado.png 'Gráfico da evolução do valor médio em função da quantidade de medidas do conjunto simulado.')
+
+![gráfico da evolução do valor médio em função da quantidade de medidas do conjunto real](medias_real.png 'Gráfico da evolução do valor médio em função da quantidade de medidas do conjunto real.')
+
+
+O terceiro conjunto de gráficos mostra a evolução dos histogramas. Vemos que os histogramas simulados são mais simétricos que os histogramas reais, evidenciando a presença de erros sistemático nos dados reais mais uma vez.
+
+![histogramas de frequência para 4 frações da quantidade total dos dados simulados](hist_simulado.png 'Histogramas de frequência para 4 frações da quantidade total dos dados simulados.')
+
+![histogramas de frequência para 4 frações da quantidade total dos dados reais](hist_real.png 'Histogramas de frequência para 4 frações da quantidade total dos dados reais.')
+
+Podemos ver, no último histograma de dados rais, uma concentração de dados um uma coluna mais alta. Mais de 90% dos dados desta coluna correspondem a um único relatório dos 5 estudados.
+
+
+
+O quarto conjunto de gráficos mostra que menos de 20% dos dados já são suficientes para ter uma incerteza do valor médio menor que a resolução do cronômetro do celular. Note que isso não significa acurácia. Apesar da boa precisão, os dados reais dão um resultado pouco acurado, evidenciando a presença de erros sistemáticos nas medições.
+
+![gráfico comparando a resolução do cronômetro com a incerteza dos valores méddo para várias frações do conjunto de dados simulados](desvio_simulado.png 'Gráfico comparando a resolução do cronômetro com a incerteza dos valores méddo para várias frações do conjunto de dados simulados')
+
+![gráfico comparando a resolução do cronômetro com a incerteza dos valores méddo para várias frações do conjunto de dados reais](desvio_real.png 'Gráfico comparando a resolução do cronômetro com a incerteza dos valores méddo para várias frações do conjunto de dados reais')
+
+## Conclusão
 
 Considerando que o tempo de reação de acionamento do cronômetro é, em média 0.25s e que acionamos 2 vezes para a medição, podemos associar uma incerteza de 0.5 segundo para cada medida feita. Esse valor é praticamente igual ao valor esperado! Com esse trabalho, vemos que a incerteza do valor médio pode ser muito menor que a incerteza individual da medida e até mesmo menor que a resolução do instrumento utilizado. 
 
