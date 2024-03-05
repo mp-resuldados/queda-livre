@@ -50,9 +50,9 @@ Simulamos um conjunto de dados com 600 medidas, mesmo número de medidas do conj
 
 Nos primeiros gráficos, mostrados abaixo, podemos comparar as 600 medidas com o valor esperado. 
 
-![gráfico dos dados simulados comparado ao valor esperado](dados_simulado.png 'Gráfico dos dados simulados comparado ao valor esperado.')
+![gráfico dos dados simulados comparado ao valor esperado](dados_simulados.png 'Gráfico dos dados simulados comparado ao valor esperado.')
 
-![gráfico dos dados reais comparado ao valor esperado](dados_real.png 'Gráfico dos dados reais comparado ao valor esperado.')
+![gráfico dos dados reais comparado ao valor esperado](dados_reais.png 'Gráfico dos dados reais comparado ao valor esperado.')
 
 Já é notável que os dados reais não se distribuem igualmente em torno do valor esperado. É um primeiro indicativo da presença de erros sistemáticos nos dados reais.
 
